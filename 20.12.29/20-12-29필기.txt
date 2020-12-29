@@ -1,0 +1,23 @@
+@ radio는 무조건 한개 선택
+
+@ checkbox는 중복 선택가능
+
+@ get방식
+ ? 키 value형태
+
+@ input에 checked는 초기값
+
+@ block태그와 nonblock(인라인)태그
+ - block태그는 개행이 있음 
+ - nonblock태그는 개행 없음 부분 수정할 때 사용
+
+@ 시멘틱이란
+ - div + 의미
+ - header,nav,section,footer 등
+ - div랑 기능은 같고 의미만 부여한것
+
+@ CSS
+ - ID는 개발자가 지정
+ - #ID.class 반드시 외우기
+
+@ import시 jdk와 tomcat버전 확인
