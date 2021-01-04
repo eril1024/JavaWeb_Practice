@@ -1,0 +1,4 @@
+@ line-height와 height의 크기를 맞추면 가운데 정렬됨
+
+@ sendRedirect() forward
+
