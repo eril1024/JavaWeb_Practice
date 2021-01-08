@@ -1,0 +1,116 @@
+--upper, lower, initcap 소문자,대문자,이니셜
+SELECT 'welcome to oracle'"적용전",upper('welcome to oracle')"upper적용후" FROM dual;
+SELECT 'WELCOME TO ORACLE'"적용전",lower('WELCOME TO ORACLE')"lower적용후" FROM dual;
+SELECT 'WELCOME TO ORACLE'"적용전",initcap('welcome to oracle')"initcap적용후" FROM dual;
+
+-- length, lengthb 길이와 크키 출력 함수
+SELECT length('oracle'), length('오라클') FROM dual;
+SELECT lengthb('oracle'), lengthb('오라클') FROM dual;
+
+--instr 특정 문자의 위치
+SELECT INSTR('Welcome to oracle', 'o') FROM dual;
+
+--SUBSTR 인덱스 4번부터 시작해서 3개 출력
+SELECT SUBSTR('Welcome to oracle',4,3) FROM dual;
+
+SELECT hiredate FROM emp;
+SELECT ENAME, 19||SUBSTR(hiredate,1,2)년도, SUBSTR(hiredate,4,2)"달" FROM emp;
+
+--9월에 입사한 사원을 출력하는 쿼리문
+SELECT * FROM emp WHERE SUBSTR(hiredate,5,1)=9;
+
+--LPAD,RPAD 20개의 공간을 만든 후 나머지는 #을 넣어라
+SELECT LPAD('ORACLE',20,'#') FROM dual;
+SELECT RPAD('ORACLE',20,'#') FROM dual;
+
+--TRIM 글자 및 공백 제거
+SELECT TRIM('a' FROM ' aabsbsb ') FROM dual;
+SELECT TRIM(' ORACLE ') FROM dual;
+
+--*날짜 함수
+
+--SYSDATE 날짜 출력
+SELECT SYSDATE FROM dual;
+SELECT SYSDATE-1어제, SYSDATE 오늘, SYSDATE+1 내일 FROM dual;
+
+--MONTHS_BETWEEN 각 직원들의 근무한 개월 수를 출력하는 쿼리문
+SELECT ename, SYSDATE, hiredate,trunc(MONTHS_BETWEEN(SYSDATE,hiredate)) 근무개월수 from emp;
+
+--ADD_MONTHS
+SELECT ENAME,HIREDATE, ADD_MONTHS(HIREDATE,1) FROM emp;
+SELECT SYSDATE, NEXT_DAY(SYSDATE,'수요일') FROM dual;
+
+--형 변환 함수
+desc emp;
+--날짜형 혹은 숫자형을 문자형으로 변환
+SELECT SYSDATE, TO_CHAR(SYSDATE, 'YYYY/MM/DD') FROM dual;
+--사원들의 입사일을 출력하되, 요일까지 출력하는 쿼리문
+SELECT hiredate, TO_CHAR(hiredate,'YY/MM/DD DAY') FROM emp;
+
+--현재 날짜와 시간을 출력하는 쿼리문
+SELECT TO_CHAR(SYSDATE,'yyyy/mm/dd hh24:mi:ss') ROM emp;
+
+--각 지역별 통화 기호를 앞에 붙히고 천 단위마다, 콤라를 붙여서 출력하는 쿼리문
+SELECT ename,sal,to_char(sal, 'L999,999') FROM emp;
+
+--문자형을 날짜형으로 (연산을 위해서)
+SELECT ENAME,hiredate from emp where hiredate=to_date(19810220,'yyyymmdd');
+select trunc(sysdate - to_date('2016/01/01','yyyy/mm/dd')) from dual;
+
+--to_number
+SELECT TO_NUMBER('20,000','99,999') - TO_NUMBER('10,000','99,999') FROM dual;
+
+--null을 다른 값으로 변환하는 함수
+select ename,sal,nvl(comm,'0')comm, job FROM emp order by job;
+
+--decode 함수 = switch case문과 같은 기능
+--사원의 부서번호를 이름으로 설정하는 쿼리문
+SELECT deptno, DECODE(deptno,10,'A',20,'B','DEFAULT') FROM emp ORDER BY deptno;
+
+--조건에 따라 서로 다른 처리가 가능한 CASE함수
+SELECT ename, deptno,
+case when deptno=10 then 'accounting'
+     when deptno=20 then 'research'
+     when deptno=30 then 'sales'
+     when deptno=40 then 'operations'
+     end as dname from emp;
+
+--그룹 함수
+--사원들의 총 급여를 구하는 쿼리문(숫자형만 가능)
+SELECT SUM(sal) FROM emp;
+SELECT COUNT(*) FROM emp;
+
+--값의 평균을 구하는 쿼리문
+SELECT avg(sal) from emp;
+
+--최댓값과 최솟값을 구하는 쿼리문
+SELECT min(sal) ,max(sal) FROM emp;
+
+--사원 테이블의 사원들 중에 커미션을 받은 사원의 수를 구하는 쿼리문
+SELECT COUNT(COMM) FROM EMP;
+SELECT * FROM emp;
+
+--중복 제거를 반영하여 담담업무의 개수를 구하는 쿼리문
+SELECT job FROM emp;
+select DISTINCT job from emp;
+
+-- GROUP BY 절
+SELECT deptno FROM emp GROUP by deptno;
+
+--소속 부서별 평균 급여를 구하는 쿼리문
+SELECT deptno,avg(sal) FROM emp GROUP BY deptno;
+SELECT DEPTNO,avg(sal) FROM emp group by deptno;
+
+--소속 부서별 급여 총액과 평균 급여를 구하는 쿼리문
+SELECT deptno,avg(sal),sum(sal) from emp group by deptno;
+
+--부서별 사원의 수와 커미션을 받는 사원의 수를 계산하는 쿼리문
+SELECT DEPTNO,COUNT(ENAME),COUNT(COMM) FROM EMP GROUP BY DEPTNO;
+SELECT DEPTNO, SUM(SAL), AVG(SAL) FROM EMP GROUP BY DEPTNO;
+SELECT DEPTNO, SUM(SAL), AVG(SAL) FROM EMP GROUP BY DEPTNO;
+SELECT ENAME FROM EMP GROUP BY ENAME;
+SELECT SUM(sal),deptno FROM emp GROUP BY job;
+
+
+
+

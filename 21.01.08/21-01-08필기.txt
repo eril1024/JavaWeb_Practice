@@ -1,0 +1,13 @@
+@ 객체를 생성하는 이유 - jsp페이지에는 화면구현만
+
+@ JSP에서 객체 생성하는 것을 좋지하는 방법이다.
+
+@ Class.forname("oracle.jdbc.driver.OracleDriver")
+ - ()안의 객체 생성 - > OracleDriver객체 생성
+@ con =DriverManager.getConnection(url, uid,upw)에서 실패시 예외로 넘어감
+
+@ executeQuery의 결과값
+ - BOF 가장 처음 위치 
+   EOF 마지막 위치
+
+
