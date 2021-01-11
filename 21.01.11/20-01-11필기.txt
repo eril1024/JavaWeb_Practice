@@ -1,0 +1,19 @@
+@ Scope
+page : 
+application :현재 어플리케이션에서 어디서든 쓸 수 있음
+seesion : 어디서든 쓸 수 있지만 시간이 정해져 있음
+request : 
+ - 유저에게 응답을 주면 request객체 사라짐
+ - request객체는 응답 전까지는 계속 살아있음
+
+@ Seesion 
+ - 대부분 새로고침시 시간 조정
+
+@ URL, URI
+ - URL : location, 특정자원의 위치
+ - URI : 식별자 포함 전체 주소
+
+@ Model1
+ - jsp파일안에는 객체 생성이 들어가면 안됌(New x) 
+
+ 
