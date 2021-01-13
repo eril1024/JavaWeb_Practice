@@ -1,0 +1,20 @@
+@ 커넥션 풀
+ - 서버에 사용자가 몰릴시 con = drivermanager.getconnection(url, uid, upw)에서 부하 걸림
+ - 커넥션 객체를 미리 정해진 양을 생성
+ - context.html에 코드 작성
+
+@ 데이터베이스
+ - primary key는 중복 불가
+ - 댓글 관련 기능
+   bGroup : 원글번호
+   bStep : 세로
+   bIndent : 가로
+
+@ mvc
+ - controller는 서블릿으로
+ - 디폴트 생성자 만들기(에러방지)
+
+@ 웹브라우저가 알 수 있는 언어는 html과 자바스크립트 밖에 없다.
+ - html에 자바 문법을 쓸 수 있는 이유는 자바 문법을 웹 브라우저에 보내기전에 html언어로 변환
+
+
