@@ -1,0 +1,2 @@
+@ char vs varchar
+ - char는 길이가 저장되어있으므로 varchar보다 속도가 빠름
