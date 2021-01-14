@@ -1,0 +1,6 @@
+@ executeUpdate()
+ - 처리된 쿼리 수를 리턴함 (int형)
+
+@ step, indent 헷갈림
+
+@ any 이해안됨
