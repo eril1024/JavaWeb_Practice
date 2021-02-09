@@ -1,0 +1,47 @@
+@ 트랜젝션
+ - 전세계 모든 은행권은 oracle db 사용
+ - rollback
+   
+ - 댓글
+  1. replyshape
+  2. update후 insert
+
+ - @transactional
+   함수 안에서 에러가 나게되면 해당 db를 함수 이전으로 되돌림 즉 한개가 성공하고 한개가 에러가 나도 둘다 성공시키지않음(함수 실행 이전상태로 돌아감)
+ - runtime exception(unchecked exception) : 롤백 함
+ - sqlexception(checked exception) : 롤백 안함
+ 
+ - checked exception : try,catch처리를 해줘야함
+                              개발자에게 에러처리를 맡김(그러므로 rollback을 안함) * 중요하다 면접이나 프로젝트에 적어줄것
+
+ - @transcational (rollbackfor = Exception.class) //unchecked이던 checked이던 rollback을 한다.
+
+ - 트랜잭션의 의미 : 어떤 일련의 작업의 의미함(한번에 이루어져야 하는 작업 단위 ) ex) reply답글
+                           모두 에러 없이 끝나야하며 에러 발생시 이전 시점으로 돌아가야함
+  트랜잭션은 500 404등의 에러처리가 아니면
+  에러 발생시 db로 하여금 원상복구 할 수 있도록 요청함
+db에서 트랜잭션 대상 update, insert, delete 한개는 문제없지만 두개이상 될때 필수적
+
+@trascational 어노테이션 붙히는 것을 가장 많이 사용함(권장사항)
+
+컨트롤러에서 trascational 사용하면 안됌(컨트롤러는 view정도만 결정해줌)(비즈니스로직을 처리하는 service에서 사용 )
+
+root-context.xml
+<!-- 트랜잭션 개체 -->
+   <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+        <property name="dataSource" ref="dataSource" />
+    </bean>
+    <!-- 에노테이션 사용가능 -->
+    <tx:annotation-driven transaction-manager="transactionManager" /> 
+
+
+
+ @프로젝트시 트랜잭션 문구 삽입
+
+ @ 자바스크립트 클로저?
+
+ @id와 class의 차이(자바스크립트)
+  - id는 한 문서에서 한번만 사용가능
+  - class는 여러번 사용가능
+
+ 
