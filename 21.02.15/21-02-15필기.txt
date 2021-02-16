@@ -1,0 +1,19 @@
+@httpservlet request, response객체 중요
+인터셉터는 두객체를 가로채서 활용한다.
+
+@aop
+인터셉터나 스프링시큐리트의 내부동작은 aop가 적용됨
+ - 함수를 따로 빼놓고 실행되면 집어넣자
+
+ - pom.xml에 aspectj를 주입해주어야 에노테이션 사용가능
+ - 프록시 패턴?
+
+@과제
+ 1. 마이바티스에서 1:n 처리
+resultMap
+collection
+
+restful처리
+사진 랜덤처리
+달러에 부서
+밑에 이름
