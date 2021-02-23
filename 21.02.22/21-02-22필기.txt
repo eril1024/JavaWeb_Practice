@@ -1,0 +1,16 @@
+@principal과 userdetails
+ - 
+
+@스프링 시큐리티
+ - 시큐리티에서도 세션을 통해 정보를 유지하고 관리함
+ - userdetails는 principal
+
+@스프링 시큐리티 세션관리
+ - 상속 관계 principal -> userdetails -> user -> vo
+
+@CSRF, XSS, 동일출처원칙
+ * CSRF 
+   - POST(form, ajax)방식에서만 적용됨
+   - 방어방식 : 패스워드를 한개 더 보내라 <input>태그로 보내줌 2개의 패스워드를 확인한다.
+
+          
